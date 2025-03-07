@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventory Update</title>
+</head>
+<body>
+    <h1>Update Inventory for {{ product.name }}</h1>
+    <p>Current Stock: {{ product.stock }}</p>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <label for="quantity">Quantity:</label>
+        <input type="number" name="quantity" required>
+        <br>
+        <label for="is_incoming">Incoming:</label>
+        <input type="checkbox" name="is_incoming" checked>
+        <br>
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>
